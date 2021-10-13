@@ -1,0 +1,35 @@
+
+
+header {
+    padding: 30px 30px 10px 30px;
+    background-color: #2796e6;
+}
+
+h1 {
+    color: #fff;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-icon {
+    cursor: pointer;
+}
+
+table {
+    width: 80%;
+    margin: 10px auto;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.form-control {
+    margin: 20px 165px;
+    width: 200px;
+    height: 35px;
+    padding-left: 10px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    border-radius: 6px;
+    border: 1px solid #616161;
+}
+
+input:focus{
+    outline: none;
+}
