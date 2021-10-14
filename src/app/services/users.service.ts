@@ -16,7 +16,7 @@ export class UsersService {
     }
 
     getUser (id: number) {
-      return fetch(`${this.apiUrl}users/${id}`)
+      return fetch(`${this.apiUrl}users/${id + 1}`)
     }
 
     deleteUser (id: number) {

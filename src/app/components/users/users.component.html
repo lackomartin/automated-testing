@@ -1,12 +1,37 @@
 <header>
-    <h1>Tablica korisnika</h1>
+  <mat-icon class="header-icon">people</mat-icon>
+  <h1>Tablica korisnika</h1>
+
+  <div class="logout" (click)="logout()" ef-feature-id="ef-logout">
+    <mat-icon class="logout-icon">logout</mat-icon>
+    <h3>Odjava</h3>
+  </div>
 </header>
 
-<input type="text" class="form-control"
+<div class="filters">
+  <input type="text" class="form-control"
+       ef-feature-id="ef-search"
        placeholder="Pretraži korisnike..."
        (input)="searchUsers($event.target.value)">
 
+  <mat-form-field appearance="outline" style="margin-top: 5px;" ef-feature-id="ef-filters">
+    <mat-label>Odaberi grad</mat-label>
+    <mat-select (selectionChange)="filter($event)" ef-feature-id="ef-select">
+      <mat-option [value]="'-'" ef-feature-id="ef-all-cities">-</mat-option>
+      <mat-option *ngFor="let element of allUsers" [value]="element.address['city']" ef-feature-id="ef-option">
+        {{element.address['city']}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
 <table mat-table [dataSource]="usersList" class="mat-elevation-z8" *ngIf="usersList && usersList.length">
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id korisnika </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
     <!-- Username Column -->
     <ng-container matColumnDef="username">
       <th mat-header-cell *matHeaderCellDef> Korisničko ime </th>
@@ -25,17 +50,23 @@
       <td mat-cell *matCellDef="let element"> {{element.email}} </td>
     </ng-container>
 
+    <!-- City Column -->
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef> Grad </th>
+      <td mat-cell *matCellDef="let element"> {{element.address['city']}} </td>
+    </ng-container>
+
     <!-- Actions Column -->
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> </th>
         <td mat-cell *matCellDef="let element">
-            <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
+            <mat-icon [matMenuTriggerFor]="menu" ef-feature-id="ef-moreOptions">more_vert</mat-icon>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="openUserDetails(element.id)">
+                <button mat-menu-item (click)="openUserDetails(element.id)" ef-feature-id="ef-details">
                   <mat-icon>info</mat-icon>
                   <span>Detalji o korisniku</span>
                 </button>
-                <button mat-menu-item (click)="deleteUser(element.id)">
+                <button mat-menu-item (click)="deleteUser(element.id)" ef-feature-id="ef-delete">
                     <mat-icon>delete</mat-icon>
                     <span>Obriši korisnika</span>
                   </button>
@@ -46,3 +77,9 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<div class="pagination-container" *ngIf="usersList && usersList.length <= 5">
+  <mat-icon (click)="pageDown()" ef-feature-id="ef-pageDown">navigate_before</mat-icon>
+  <p class="page">Stranica {{currentPage}} od {{pageNumber}}</p>
+  <mat-icon (click)="pageUp()" style="margin-left: -17px;" ef-feature-id="ef-pageUp">navigate_next</mat-icon>
+</div>

@@ -1,11 +1,36 @@
 
 
 header {
+    display: flex;
     padding: 30px 30px 10px 30px;
     background-color: #2796e6;
+    width: 105%;
+}
+
+.header-icon {
+    color: #fff;
+    position: relative;
+}
+
+.logout-icon {
+    margin-top: 10px;
+}
+
+h3 {
+    margin: 8px;
+}
+
+.logout {
+    display: flex;
+    color: #fff;
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    cursor: pointer;
 }
 
 h1 {
+    margin-left: -30px;
     color: #fff;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
@@ -20,16 +45,37 @@ table {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.filters {
+    margin-top: 20px;
+    margin-left: 165px;
+    display: flex;
+}
+
 .form-control {
-    margin: 20px 165px;
     width: 200px;
-    height: 35px;
+    margin-top: 9px;
+    height: 47px;
     padding-left: 10px;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     border-radius: 6px;
-    border: 1px solid #616161;
+    border: 1px solid #979595;
 }
 
 input:focus{
     outline: none;
+}
+
+mat-form-field {
+    margin-left: 20px;
+}
+
+.pagination-container {
+    margin-top: 20px;
+    margin-left: 80%;
+    display: flex;
+    width: 300px;
+}
+
+.page {
+    margin: 3px 5px;
 }

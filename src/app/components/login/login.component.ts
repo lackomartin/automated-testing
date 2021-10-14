@@ -11,7 +11,6 @@ export class LoginComponent implements OnInit {
 
  loginForm: FormGroup
  code: any
- viewRenderedAt: any
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,8 +27,10 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.loginForm.controls.username.value === 'test_user' &&
-        this.loginForm.controls.password.value === 'test123') {
+    if ((this.loginForm.controls.username.value === 'test_user' &&
+        this.loginForm.controls.password.value === 'test123') ||
+        (this.loginForm.controls.username.value === 'test_admin' &&
+        this.loginForm.controls.password.value === 'admin123')) {
       this.router.navigate(['/users-list'])
     } else {
       this.code = 'Pogrešna lozinka ili korisničko ime!'
