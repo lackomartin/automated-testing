@@ -51,3 +51,9 @@ input[type="submit"]:hover {
         width: 30%;
     }
 }
+
+.error-msg {
+    text-align: left;
+    font-size: 12px;
+    margin-left: 5px;
+}

@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
         this.loginForm.controls.password.value === 'test123') ||
         (this.loginForm.controls.username.value === 'test_admin' &&
         this.loginForm.controls.password.value === 'admin123')) {
+      this.code = ''
       this.router.navigate(['/users-list'])
     } else {
       this.code = 'Pogrešna lozinka ili korisničko ime!'
