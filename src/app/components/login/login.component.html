@@ -2,7 +2,7 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <input placeholder="username" formControlName="username" ef-feature-id="ef-username">
         <input type="password" placeholder="password" formControlName="password" ef-feature-id="ef-password">
-        <div class="error-msg" *ngIf="code !== ''" ef-feature-id="error-message">{{code}}</div>
+        <!-- <div class="error-msg" *ngIf="code !== ''" ef-feature-id="error-message">{{code}}</div> -->
         <input type="submit" value="Potrdi" ef-feature-id="ef-submit">
     </form>
 </div>
